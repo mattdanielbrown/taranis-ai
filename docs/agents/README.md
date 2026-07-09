@@ -7,6 +7,7 @@ Use these files when a task mentions a related feature, workflow, route, model, 
 ## Memories
 
 - [Assess Filters](assess-filters.md) - assess sidebar filters, filter-list loading, default filters, omnisearch filter handling, and related cache behavior.
+- [Audit Logging](audit-logging.md) - core audit logging scope, JSONL fields, security limits, and tests.
 - [Admin User Import/Export](admin-user-import-export.md) - admin user export/import JSON format, duplicate handling, passwordless external users, and UI notification behavior.
 - [Admin User CLI](admin-user-cli.md) - operational password reset and role repair through `taranis-cli` inside the core container.
 - [Release Gate Tests](release-gate-tests.md) - Docker/Compose release gates that run expensive checks against already published GHCR images.
