@@ -257,12 +257,17 @@ def migrate_user_profile(user_profile: dict, template: dict) -> dict:
 
 
 def migrate_user_profiles():
+    from core.model.settings import Settings
     from core.model.user import PROFILE_TEMPLATE, User
 
+    profile_template = {
+        **PROFILE_TEMPLATE,
+        "onboarding_enabled": Settings.get_settings().get("onboarding_enabled", not Config.SKIP_INITIAL_USER_ONBOARDING),
+    }
     users = User.get_all_for_collector() or []
     for user in users:
         current = user.profile if isinstance(user.profile, dict) else {}
-        updated = migrate_user_profile(current, PROFILE_TEMPLATE)
+        updated = migrate_user_profile(current, profile_template)
         if current != updated:
             logger.debug(f"Migrating user profile for user {user.name}")
             User.update_profile(user=user, data=updated)
