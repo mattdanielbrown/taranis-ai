@@ -210,7 +210,7 @@ CONTAINER_CLI=docker BASE_REF=1.4.1 ./dev/test_master_to_branch_migration.sh
 
 `KEEP_MIGRATION_TEST_DB=1` leaves the temporary worktree and PostgreSQL container running for inspection. Do not point this harness at shared or production databases.
 
-After schema-related changes merge to `master`, CI uses this harness with the latest stable Git release tag as `BASE_REF` and the merged `master` checkout as the migration target.
+After a schema-related PR is approved, CI uses this harness with the latest stable Git release tag as `BASE_REF` and the approved PR checkout as the migration target.
 
 ### RQ Cron Scheduler
 
