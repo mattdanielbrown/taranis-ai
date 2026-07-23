@@ -828,7 +828,7 @@ class Story(BaseModel):
     def add_news_items(cls, news_items_list: list[dict], user: User | None = None):
         story_ids = []
         news_item_ids = []
-        skipped_items = []
+        skipped_items: list[dict[str, str] | str] = []
         try:
             for news_item in news_items_list:
                 normalized_news_item, err = cls.check_news_item_data(news_item)
